@@ -1,124 +1,379 @@
 {
-  "startingBalance": "B3",
-  "total": "N",
-  "average": "O",
-  "categories": [
-    { "id": 0, "label": "Income", "ranges": [12, 18], "isExpenses": false },
-    {
-      "id": 1,
-      "label": "Home Expenses",
-      "ranges": [22, 31],
-      "isExpenses": true
-    },
-    {
-      "id": 2,
-      "label": "Transportation",
-      "ranges": [35, 36],
-      "isExpenses": true
-    },
-    { "id": 3, "label": "Health", "ranges": [40, 43], "isExpenses": true },
-    {
-      "id": 4,
-      "label": "Charity / Gifts",
-      "ranges": [47, 48],
-      "isExpenses": true
-    },
-    {
-      "id": 5,
-      "label": "Daily Livings",
-      "ranges": [52, 59],
-      "isExpenses": true
-    },
-    {
-      "id": 6,
-      "label": "Entertainment",
-      "ranges": [63, 74],
-      "isExpenses": true
-    },
-    { "id": 7, "label": "Savings", "ranges": [78, 79], "isExpenses": true },
-    { "id": 8, "label": "Obligations", "ranges": [83, 85], "isExpenses": true },
-    {
-      "id": 9,
-      "label": "Subscription",
-      "ranges": [89, 90],
-      "isExpenses": true
-    },
-    {
-      "id": 10,
-      "label": "Miscellaneous",
-      "ranges": [94, 96],
-      "isExpenses": true
-    }
-  ],
-  "rows": [
-    { "rowId": "12", "label": "Wages & Tips" },
-    { "rowId": "13", "label": "Interest Income" },
-    { "rowId": "14", "label": "Dividends" },
-    { "rowId": "15", "label": "Gifts Received" },
-    { "rowId": "16", "label": "Refunds/Reimbursements" },
-    { "rowId": "17", "label": "Transfer From Savings" },
-    { "rowId": "18", "label": "Other" },
-    { "rowId": "22", "label": "Mortgage/Rent" },
-    { "rowId": "23", "label": "Home/Rental Insurance" },
-    { "rowId": "24", "label": "Electricity" },
-    { "rowId": "25", "label": "Water/Sewer/Trash" },
-    { "rowId": "26", "label": "Phone" },
-    { "rowId": "27", "label": "Internet" },
-    { "rowId": "28", "label": "Furnishings/Appliances" },
-    { "rowId": "29", "label": "Lawn/Garden" },
-    { "rowId": "30", "label": "Maintenance/Supplies" },
-    { "rowId": "31", "label": "Other" },
-    { "rowId": "35", "label": "Bus/Taxi/Train Fare" },
-    { "rowId": "36", "label": "Other" },
-    { "rowId": "40", "label": "Health Insurance" },
-    { "rowId": "41", "label": "Doctor/Dentist" },
-    { "rowId": "42", "label": "Medicine/Drugs" },
-    { "rowId": "43", "label": "Other" },
-    { "rowId": "47", "label": "Gifts Given" },
-    { "rowId": "48", "label": "Other" },
-    { "rowId": "52", "label": "Groceries" },
-    { "rowId": "53", "label": "Personal Supplies" },
-    { "rowId": "54", "label": "Clothing" },
-    { "rowId": "55", "label": "Cleaning" },
-    { "rowId": "56", "label": "Education/Lessons" },
-    { "rowId": "57", "label": "Dining/Eating Out" },
-    { "rowId": "58", "label": "Bar / Pub" },
-    { "rowId": "59", "label": "Other" },
-    { "rowId": "63", "label": "Music" },
-    { "rowId": "64", "label": "Games" },
-    { "rowId": "65", "label": "Rentals" },
-    { "rowId": "66", "label": "Movies/Theater" },
-    { "rowId": "67", "label": "Concerts/Plays" },
-    { "rowId": "68", "label": "Books" },
-    { "rowId": "69", "label": "Hobbies" },
-    { "rowId": "70", "label": "Sports" },
-    { "rowId": "71", "label": "Outdoor Recreation" },
-    { "rowId": "72", "label": "Toys/Gadgets" },
-    { "rowId": "73", "label": "Vacation/Travel" },
-    { "rowId": "74", "label": "Other" },
-    { "rowId": "78", "label": "Investments" },
-    { "rowId": "79", "label": "Other" },
-    { "rowId": "83", "label": "Other Loan" },
-    { "rowId": "84", "label": "State/Local Taxes" },
-    { "rowId": "85", "label": "Other" },
-    { "rowId": "89", "label": "Dues / Memberships" },
-    { "rowId": "90", "label": "Other" },
-    { "rowId": "94", "label": "Bank Fees" },
-    { "rowId": "95", "label": "Postage" },
-    { "rowId": "96", "label": "Other" }
-  ],
-  "months": [
-    { "id": 2, "name": "January" },
-    { "id": 3, "name": "February" },
-    { "id": 4, "name": "March" },
-    { "id": 5, "name": "April" },
-    { "id": 6, "name": "Mai" },
-    { "id": 7, "name": "June" },
-    { "id": 8, "name": "July" },
-    { "id": 9, "name": "August" },
-    { "id": 10, "name": "September" },
-    { "id": 11, "name": "October" },
-    { "id": 12, "name": "Novembre" },
-    { "id": 13, "name": "December" }
-  ]
+    "startingBalance": "B3",
+    "total": "N",
+    "average": "O",
+    "categoriesTotalRow": "5",
+    "categories": [
+        {
+            "id": 0,
+            "label": "Income",
+            "ranges": [
+                12,
+                18
+            ],
+            "isExpenses": false
+        },
+        {
+            "id": 1,
+            "label": "Home Expenses",
+            "ranges": [
+                22,
+                31
+            ],
+            "isExpenses": true
+        },
+        {
+            "id": 2,
+            "label": "Transportation",
+            "ranges": [
+                35,
+                36
+            ],
+            "isExpenses": true
+        },
+        {
+            "id": 3,
+            "label": "Health",
+            "ranges": [
+                40,
+                43
+            ],
+            "isExpenses": true
+        },
+        {
+            "id": 4,
+            "label": "Charity / Gifts",
+            "ranges": [
+                47,
+                48
+            ],
+            "isExpenses": true
+        },
+        {
+            "id": 5,
+            "label": "Daily Livings",
+            "ranges": [
+                52,
+                59
+            ],
+            "isExpenses": true
+        },
+        {
+            "id": 6,
+            "label": "Entertainment",
+            "ranges": [
+                63,
+                74
+            ],
+            "isExpenses": true
+        },
+        {
+            "id": 7,
+            "label": "Savings",
+            "ranges": [
+                78,
+                79
+            ],
+            "isExpenses": true
+        },
+        {
+            "id": 8,
+            "label": "Obligations",
+            "ranges": [
+                83,
+                85
+            ],
+            "isExpenses": true
+        },
+        {
+            "id": 9,
+            "label": "Subscription",
+            "ranges": [
+                89,
+                90
+            ],
+            "isExpenses": true
+        },
+        {
+            "id": 10,
+            "label": "Miscellaneous",
+            "ranges": [
+                94,
+                96
+            ],
+            "isExpenses": true
+        }
+    ],
+    "rows": [
+        {
+            "rowId": "12",
+            "label": "Wages & Tips"
+        },
+        {
+            "rowId": "13",
+            "label": "Interest Income"
+        },
+        {
+            "rowId": "14",
+            "label": "Dividends"
+        },
+        {
+            "rowId": "15",
+            "label": "Gifts Received"
+        },
+        {
+            "rowId": "16",
+            "label": "Refunds/Reimbursements"
+        },
+        {
+            "rowId": "17",
+            "label": "Transfer From Savings"
+        },
+        {
+            "rowId": "18",
+            "label": "Other"
+        },
+        {
+            "rowId": "22",
+            "label": "Mortgage/Rent"
+        },
+        {
+            "rowId": "23",
+            "label": "Home/Rental Insurance"
+        },
+        {
+            "rowId": "24",
+            "label": "Electricity"
+        },
+        {
+            "rowId": "25",
+            "label": "Water/Sewer/Trash"
+        },
+        {
+            "rowId": "26",
+            "label": "Phone"
+        },
+        {
+            "rowId": "27",
+            "label": "Internet"
+        },
+        {
+            "rowId": "28",
+            "label": "Furnishings/Appliances"
+        },
+        {
+            "rowId": "29",
+            "label": "Lawn/Garden"
+        },
+        {
+            "rowId": "30",
+            "label": "Maintenance/Supplies"
+        },
+        {
+            "rowId": "31",
+            "label": "Other"
+        },
+        {
+            "rowId": "35",
+            "label": "Bus/Taxi/Train Fare"
+        },
+        {
+            "rowId": "36",
+            "label": "Other"
+        },
+        {
+            "rowId": "40",
+            "label": "Health Insurance"
+        },
+        {
+            "rowId": "41",
+            "label": "Doctor/Dentist"
+        },
+        {
+            "rowId": "42",
+            "label": "Medicine/Drugs"
+        },
+        {
+            "rowId": "43",
+            "label": "Other"
+        },
+        {
+            "rowId": "47",
+            "label": "Gifts Given"
+        },
+        {
+            "rowId": "48",
+            "label": "Other"
+        },
+        {
+            "rowId": "52",
+            "label": "Groceries"
+        },
+        {
+            "rowId": "53",
+            "label": "Personal Supplies"
+        },
+        {
+            "rowId": "54",
+            "label": "Clothing"
+        },
+        {
+            "rowId": "55",
+            "label": "Cleaning"
+        },
+        {
+            "rowId": "56",
+            "label": "Education/Lessons"
+        },
+        {
+            "rowId": "57",
+            "label": "Dining/Eating Out"
+        },
+        {
+            "rowId": "58",
+            "label": "Bar / Pub"
+        },
+        {
+            "rowId": "59",
+            "label": "Other"
+        },
+        {
+            "rowId": "63",
+            "label": "Music"
+        },
+        {
+            "rowId": "64",
+            "label": "Games"
+        },
+        {
+            "rowId": "65",
+            "label": "Rentals"
+        },
+        {
+            "rowId": "66",
+            "label": "Movies/Theater"
+        },
+        {
+            "rowId": "67",
+            "label": "Concerts/Plays"
+        },
+        {
+            "rowId": "68",
+            "label": "Books"
+        },
+        {
+            "rowId": "69",
+            "label": "Hobbies"
+        },
+        {
+            "rowId": "70",
+            "label": "Sports"
+        },
+        {
+            "rowId": "71",
+            "label": "Outdoor Recreation"
+        },
+        {
+            "rowId": "72",
+            "label": "Toys/Gadgets"
+        },
+        {
+            "rowId": "73",
+            "label": "Vacation/Travel"
+        },
+        {
+            "rowId": "74",
+            "label": "Other"
+        },
+        {
+            "rowId": "78",
+            "label": "Investments"
+        },
+        {
+            "rowId": "79",
+            "label": "Other"
+        },
+        {
+            "rowId": "83",
+            "label": "Other Loan"
+        },
+        {
+            "rowId": "84",
+            "label": "State/Local Taxes"
+        },
+        {
+            "rowId": "85",
+            "label": "Other"
+        },
+        {
+            "rowId": "89",
+            "label": "Dues / Memberships"
+        },
+        {
+            "rowId": "90",
+            "label": "Other"
+        },
+        {
+            "rowId": "94",
+            "label": "Bank Fees"
+        },
+        {
+            "rowId": "95",
+            "label": "Postage"
+        },
+        {
+            "rowId": "96",
+            "label": "Other"
+        }
+    ],
+    "months": [
+        {
+            "id": 2,
+            "name": "January"
+        },
+        {
+            "id": 3,
+            "name": "February"
+        },
+        {
+            "id": 4,
+            "name": "March"
+        },
+        {
+            "id": 5,
+            "name": "April"
+        },
+        {
+            "id": 6,
+            "name": "Mai"
+        },
+        {
+            "id": 7,
+            "name": "June"
+        },
+        {
+            "id": 8,
+            "name": "July"
+        },
+        {
+            "id": 9,
+            "name": "August"
+        },
+        {
+            "id": 10,
+            "name": "September"
+        },
+        {
+            "id": 11,
+            "name": "October"
+        },
+        {
+            "id": 12,
+            "name": "Novembre"
+        },
+        {
+            "id": 13,
+            "name": "December"
+        }
+    ]
 }
