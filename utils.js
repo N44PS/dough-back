@@ -8,7 +8,7 @@ const CREDENTIALS = {
   private_key: process.env.PRIVATE_KEY.replace(/\\n/g, "\n")
 };
 
-const util = require('util');
+const util = require("util");
 
 module.exports = GOOGLESHEET = {
   doc: null,
@@ -29,28 +29,28 @@ module.exports = GOOGLESHEET = {
     ]);
   },
 
-  getInfo: (cb = () => { }) => {
+  getInfo: (cb = () => {}) => {
     console.log("Sheet::getInfo");
-    GOOGLESHEET.doc.getInfo(function (err, info) {
+    GOOGLESHEET.doc.getInfo(function(err, info) {
       console.log("Loaded doc: " + info.title + " by " + info.author.email);
       GOOGLESHEET.sheet = info.worksheets[0];
       console.log(
         "sheet 1: " +
-        GOOGLESHEET.sheet.title +
-        " " +
-        GOOGLESHEET.sheet.rowCount +
-        "x" +
-        GOOGLESHEET.sheet.colCount
+          GOOGLESHEET.sheet.title +
+          " " +
+          GOOGLESHEET.sheet.rowCount +
+          "x" +
+          GOOGLESHEET.sheet.colCount
       );
       cb();
     });
   },
 
-  getTotalExpensesByMonth: month => {
+  getMonthStatus: month => {
     return new Promise((resolve, reject) => {
       const options = {
-        "min-row": structureSheet.categoriesTotalRow,
-        "max-row": structureSheet.categoriesTotalRow,
+        "min-row": structureSheet.totalIncome,
+        "max-row": structureSheet.balance,
         "min-col": month,
         "max-col": month,
         "return-empty": true
@@ -59,7 +59,10 @@ module.exports = GOOGLESHEET = {
         if (err) {
           reject({ status: "error", err });
         } else {
-          resolve(cells.map(cell => cell.value || "0")[0]);
+          const [totalIncome, totalExpenses, netIncome, balance] = cells.map(
+            cell => cell.numericValue || 0
+          );
+          resolve({ totalIncome, totalExpenses, netIncome, balance });
         }
       });
     });
@@ -81,7 +84,13 @@ module.exports = GOOGLESHEET = {
             const { id, label, isExpenses } = category;
             const entries = getEntries(category.ranges, cells);
             const total = entries.pop();
-            return { id, label, isExpenses, entries, total: total.value };
+            return {
+              id,
+              label,
+              isExpenses,
+              entries,
+              total: total.numericValue
+            };
           });
           resolve(results);
         }
@@ -93,25 +102,34 @@ module.exports = GOOGLESHEET = {
     GOOGLESHEET.cells = [];
     return await Promise.all([
       GOOGLESHEET.getCells(month),
-      GOOGLESHEET.getTotalExpensesByMonth(month)
-    ]).then(results => ({ categories: results[0], totalExpenses: results[1] }));
+      GOOGLESHEET.getMonthStatus(month)
+    ]).then(results => ({ categories: results[0], ...results[1] }));
   },
 
   updateCell: (batchId, value, method) => {
     return new Promise((resolve, reject) => {
       const cell = GOOGLESHEET.cells.find(cell => cell.batchId === batchId);
       if (!cell) {
-        reject({ status: "error", err: "Couldn't find cell" });
+        reject("Couldn't find cell");
       } else {
-        console.log("updateCell", batchId, value, method);
-        console.log(cell.value);
-        //cell.value = value;
-        // commenting this just in case. Please modify R18C2 only for tests
-        // cell.save(_ => {
-        // Check what to send back properly
-        // resolve({ cell, batchId, value });
-        //});
-        resolve(true);
+        const currentValue = +cell.value;
+        switch (method) {
+          case "Add": {
+            cell.value = currentValue + value;
+            break;
+          }
+          case "Remove": {
+            cell.value = currentValue - value;
+            break;
+          }
+          case "Reset": {
+            cell.value = value;
+            break;
+          }
+        }
+        cell.save(_ => {
+          resolve(true);
+        });
       }
     });
   }
