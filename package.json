@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
+    "start": "cross-env NODE_ENV=production node app.js",
+    "dev": "cross-env NODE_ENV=development nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Florian Michaut",
@@ -16,5 +16,8 @@
     "dotenv": "^5.0.0",
     "express": "^4.16.2",
     "google-spreadsheet": "^2.0.4"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.4"
   }
 }

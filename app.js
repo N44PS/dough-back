@@ -7,12 +7,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 var routes = require("./routes.js");
+var environment = require("./environment.js");
 
 app.use(function(req, res, next) {
   res.header(
     "Access-Control-Allow-Origin",
-    "https://dough-4f780.firebaseapp.com"
-  ); //<-- you can change this with a specific url like http://localhost:4200
+    environment[process.env.NODE_ENV].CORS
+  );
   res.header("Access-Control-Allow-Credentials", true);
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
   res.header(
