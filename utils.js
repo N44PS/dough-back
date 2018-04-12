@@ -112,18 +112,18 @@ module.exports = GOOGLESHEET = {
       if (!cell) {
         reject("Couldn't find cell");
       } else {
-        const currentValue = +cell.value;
+        const currentValue = cell.numericValue;
         switch (method) {
           case "Add": {
-            cell.value = currentValue + value;
+            cell.numericValue = currentValue + value;
             break;
           }
           case "Remove": {
-            cell.value = currentValue - value;
+            cell.numericValue = currentValue - value;
             break;
           }
           case "Reset": {
-            cell.value = value;
+            cell.numericValue = value;
             break;
           }
         }
